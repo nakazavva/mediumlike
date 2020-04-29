@@ -1,0 +1,21 @@
+<a class="logo" href="{{ .Site.BaseURL }}/">
+    {{ if .Site.Params.logo }}
+        {{ $url := path.Join "/static" .Site.Params.logo }}
+        {{ if eq (path.Ext $url) ".svg" }}
+            {{ $url | readFile | safeHTML }}
+        {{ else }}
+            <img src="{{ .Site.Params.logo }}">
+        {{ end }}
+    {{ else }}
+        {{ .Title }}
+    {{ end }}
+</a>
+<nav class="fixed-top">
+    <ul>
+        {{ range .Site.Menus.main }}
+        <li>
+            <a href="{{ .URL }}">{{ .Name | upper }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</nav>

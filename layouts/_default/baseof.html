@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    {{ partial "head.html" . }}
+    <body>
+        <div class="container">
+            <header>
+            {{- partial "header.html" . -}}
+            </header>
+            <main>
+            {{- block "main" . }}{{- end }}
+            </main>
+            <aside>
+                <section>
+                    <h3 class="section-title">Recent Post</h3>
+                    {{ range $.Site.RegularPages }}
+                    <article>
+                        <div class="card-body">
+                            <h2 class="card-title"><a class="text-dark" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                            <time>{{ .Date.Format "January 2, 2006" }}</time>
+                        </div>
+                    </article>
+                    {{end}}
+                </section>
+            </aside>
+            <footer>
+            {{- partial "footer.html" . -}}
+            </footer>
+        </div>
+    </body>
+</html>

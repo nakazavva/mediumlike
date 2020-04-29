@@ -1,0 +1,30 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+staticDir = ["static"]
+
+theme = "mediumlike"
+hasCJKLanguage = true
+summaryLength = 50
+
+copyright = "nakazavva - All rights reserved"
+
+[params]
+  logo = "images/logo.svg"
+
+## Main Menu
+[[menu.main]]
+  name = "Blog"
+  weight = 100
+  identifier = "blog"
+  url = "/blog"
+[[menu.main]]
+  name = "About Me"
+  identifier = "about"
+  weight = 200
+  url = "/"
+[[menu.main]]
+  name = "Imprint"
+  identifier = "imprint"
+  weight = 200
+  url = "/static/imprint"

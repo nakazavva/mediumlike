@@ -1,0 +1,16 @@
+{{ define "main" }}
+    {{ range seq 1 }}
+    {{ range $.Site.RegularPages }}
+        <article>
+            <div class="card-body">
+                <h2 class="card-title"><a class="text-dark" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                <h4 class="card-summary">{{ .Summary }}</h4>
+                <time>{{ .Date.Format "January 2, 2006" }}</time>
+            </div>
+            {{ with (.Resources.GetMatch "cover.*") }}
+            <img src="{{ .Permalink }}">
+            {{ end }}
+        </article>
+    {{end}}
+    {{end}}
+{{end}}
