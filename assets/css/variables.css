@@ -1,0 +1,9 @@
+@import url('https://cdn.rawgit.com/filipelinhares/ress/master/dist/ress.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+:root {
+    --font-size-main: 16px;
+    --font-color-main: rgb(0,0,0,.84);
+    --font-color-sub: rgb(0,0,0,.64);
+    --font-family-main: Roboto !important;
+}
