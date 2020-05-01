@@ -5,12 +5,27 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.4",
     "postcss-cli": "^7.1.1",
-    "postcss-import": "^12.0.1",
-    "postcss-preset-env": "^6.7.0"
+    "postcss-preset-env": "^6.7.0",
+    "rimraf": "^3.0.2"
+  },
+  "config": {
+    "hugo_src":  "exampleSite",
+    "asset_src": "src/index.js",
+    "asset_out": "assets/dist"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "run-s build:asset build:hugo",
+    "clean": "run-p clean:*",
+    "dev": "run-s build:asset && run-p dev:*",
+    "build:hugo": "hugo -s ${npm_package_config_hugo_src} -t ../../ --minify",
+    "clean:hugo": "rimraf ${npm_package_config_hugo_src}/public ${npm_package_config_hugo_src}/resources",
+    "dev:hugo": "hugo server -s ${npm_package_config_hugo_src} -t ../../",
+    "build:asset": "parcel build ${npm_package_config_asset_src} -d ${npm_package_config_asset_out} --no-minify",
+    "dev:asset": "parcel watch ${npm_package_config_asset_src} -d ${npm_package_config_asset_out}",
+    "clean:asset": "rimraf ${npm_package_config_asset_out}/"
   },
   "author": "",
   "license": "ISC"

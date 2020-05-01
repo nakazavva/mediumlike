@@ -10,6 +10,8 @@
 	{{ with .Site.Params.meta.keywords }}<meta name="keywords" content="{{ . }}">{{ end }}
 	{{ template "_internal/twitter_cards.html" . }}
     {{ template "_internal/opengraph.html" . }}
-    {{ $styles := resources.Get "css/main.css" | postCSS | fingerprint }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+    {{ $cssMain := resources.Get "dist/index.css" }}
+    {{ $cssCustom := resources.Get "css/custom.css" }}
+    {{ $css := slice $cssMain $cssCustom | resources.Concat "css/main.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.Permalink | relURL  }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous"> 
 </head>

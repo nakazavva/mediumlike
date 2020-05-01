@@ -6,9 +6,6 @@ hasCJKLanguage = true
 summaryLength = 50
 copyright = "nakazavva - All rights reserved"
 
-[[module.imports]]
-path="github.com/nakazavva/mediumlike"
-
 [params]
   logo = "images/logo.svg"
 

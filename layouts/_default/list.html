@@ -8,7 +8,7 @@
                 <time>{{ .Date.Format "January 2, 2006" }}</time>
             </div>
             {{ with (.Resources.GetMatch "cover.*") }}
-            <img src="{{ .Permalink }}">
+            <img src="{{ .RelPermalink }}">
             {{ end }}
         </article>
     {{end}}
